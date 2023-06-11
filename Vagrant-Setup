@@ -1,0 +1,101 @@
+Install Vagrant on Windows 
+
+Required Tools
+Virtual Box
+Vagrant
+Git
+
+What does Vagrant work?
+Creating and destroy VMs.
+Starting, stopping and restarting VMs.
+Access to VMs.
+Networking and WM setting
+v.v
+
+Step by step install Vagrant on Windows 10
+Step 1: Installing Git for windows 10
+
+Link download URL: git here. The during install Vagrant steps,  You can Select as below
+
+“Use Git from the Windows Command Prompt”
+“Checkout as-is, commit Unix-style line endings”
+Step 2: Downloading and Installing VirtualBox on Windows 10
+
+Link Download URL: http://download.virtualbox.org/virtualbox/5.2.22/
+
+Step 3: Installing Vagrant on windows 10
+
+Link download URL: https://releases.hashicorp.com/vagrant/
+
+I use Vagrant version 2.2.0 Link here.  Installing the Vagrant is very easy, then restart your machine.
+
+Install Vagrant on Windows 10
+
+Download and run Centos 7 Vagrant Box on Windows 10
+Open Git Bash as below
+
+HuuPV@LAPTOP-HKT198TT MINGW64 ~
+$ pwd
+/c/Users/HuuPV
+
+HuuPV@LAPTOP-HKT198TT MINGW64 ~
+$ mkdir VMs_vagrant
+
+HuuPV@LAPTOP-HKT198TT MINGW64 ~
+$ cd VMs_vagrant/
+
+HuuPV@LAPTOP-HKT198TT MINGW64 ~/VMs_vagrant
+$ mkdir Centos7
+
+HuuPV@LAPTOP-HKT198TT MINGW64 ~/VMs_vagrant
+$ cd Centos7/
+
+HuuPV@LAPTOP-HKT198TT MINGW64 ~/VMs_vagrant/Centos7
+$ vagrant.exe init
+A `Vagrantfile` has been placed in this directory. You are now
+ready to `vagrant up` your first virtual environment! Please read
+the comments in the Vagrantfile as well as documentation on
+`vagrantup.com` for more information on using Vagrant.
+
+HuuPV@LAPTOP-HKT198TT MINGW64 ~/VMs_vagrant/Centos7
+$ notepad Vagrantfile
+The result as the picture below
+
+Install Vagrant on Windows 10 01
+
+Install Vagrant on Windows 10 02
+
+Install Vagrant on Windows 10 03
+
+The content “Vagrantfile” file
+
+Vagrant.configure("2") do |config|
+config.ssh.insert_key = false
+config.vm.provider :virtualbox do |vb|
+  vb.memory = 256
+  vb.cpus = 1
+end
+# Application server 1.
+config.vm.define "app1" do |app1|
+  app1.vm.hostname = "app1.dev"
+  app1.vm.box = "centos/7"
+  app1.vm.network :private_network, ip: "192.168.3.4"
+end
+end
+Vagrant ssh (Connecting non-GUI Linux OS)
+
+$ vagrant.exe ssh
+The result as the picture below
+
+Vagrant connect VMs
+
+Most Common Vagrant Commands
+vagrant init: initialize
+vagrant up: Download image and do rest of the settings and power-up the box
+vagrant status: Shows status
+vagrant suspend: Saves the box’s current state
+vagrant halt: shutdown the box (Power-off)
+vagrant destroy: shutdown and delete the box
+How to Install Vagrant on Windows 10 Youtube
+
+https://youtu.be/WZITvq1l2VY
